@@ -11,11 +11,11 @@ class AdminSeeder extends Seeder
     public function run(): void
     {
         $admins = [
-            ['username' => 'admin1', 'password' => 'admin123'],
-            ['username' => 'admin2', 'password' => 'admin123'],
-            ['username' => 'admin3', 'password' => 'admin123'],
-            ['username' => 'admin4', 'password' => 'admin123'],
-            ['username' => 'admin5', 'password' => 'admin123'],
+            ['username' => 'admin1', 'password' => 'admin5flix'],
+            ['username' => 'admin2', 'password' => 'admin5flix'],
+            ['username' => 'admin3', 'password' => 'admin5flix'],
+            ['username' => 'admin4', 'password' => 'admin5flix'],
+            ['username' => 'admin5', 'password' => 'admin5flix'],
         ];
 
         foreach ($admins as $admin) {

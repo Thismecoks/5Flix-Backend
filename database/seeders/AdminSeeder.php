@@ -12,24 +12,24 @@ class AdminSeeder extends Seeder
     {
         $admins = [
             [
-                'username' => env('ADMIN1_USERNAME', 'admin1'),
-                'password' => env('ADMIN1_PASSWORD', 'admin123'),
+                'username' => env('ADMIN1_USERNAME'),
+                'password' => env('ADMIN1_PASSWORD'),
             ],
             [
-                'username' => env('ADMIN2_USERNAME', 'admin2'),
-                'password' => env('ADMIN2_PASSWORD', 'admin123'),
+                'username' => env('ADMIN2_USERNAME'),
+                'password' => env('ADMIN2_PASSWORD'),
             ],
             [
-                'username' => env('ADMIN3_USERNAME', 'admin3'),
-                'password' => env('ADMIN3_PASSWORD', 'admin123'),
+                'username' => env('ADMIN3_USERNAME'),
+                'password' => env('ADMIN3_PASSWORD'),
             ],
             [
-                'username' => env('ADMIN4_USERNAME', 'admin4'),
-                'password' => env('ADMIN4_PASSWORD', 'admin123'),
+                'username' => env('ADMIN4_USERNAME'),
+                'password' => env('ADMIN4_PASSWORD'),
             ],
             [
-                'username' => env('ADMIN5_USERNAME', 'admin5'),
-                'password' => env('ADMIN5_PASSWORD', 'admin123'),
+                'username' => env('ADMIN5_USERNAME'),
+                'password' => env('ADMIN5_PASSWORD'),
             ],
         ];
 

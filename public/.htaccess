@@ -1,0 +1,69 @@
+# PHP Configuration for Large File Uploads
+php_value post_max_size 2G
+php_value upload_max_filesize 2G
+php_value max_execution_time 3600
+php_value max_input_time 3600
+php_value memory_limit 1G
+php_value max_file_uploads 20
+
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Handle X-XSRF-Token Header
+    RewriteCond %{HTTP:x-xsrf-token} .
+    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+
+# Security Headers untuk File Upload
+<IfModule mod_headers.c>
+    # Allow large content length
+    Header always unset Content-Length
+
+    # CORS untuk upload
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header always set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With, X-CSRF-TOKEN"
+</IfModule>
+
+# File Type Security
+<FilesMatch "\.(mp4|avi|mkv|mov|wmv|flv|webm|m4v)$">
+    # Prevent execution of video files as scripts
+    RemoveHandler .php .phtml .php3 .php4 .php5 .php6
+    RemoveType .php .phtml .php3 .php4 .php5 .php6
+</FilesMatch>
+
+# Limit untuk file types tertentu
+<Files ~ "\.(mp4|avi|mkv|mov|wmv|flv|webm|m4v)$">
+    php_value upload_max_filesize 2G
+    php_value post_max_size 2G
+</Files>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# PHP Settings
+php_value post_max_size 2G
+php_value upload_max_filesize 2G
